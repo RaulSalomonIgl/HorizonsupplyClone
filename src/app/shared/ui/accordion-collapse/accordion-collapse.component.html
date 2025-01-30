@@ -1,0 +1,5 @@
+<div id="accordion-collapse" data-accordion="collapse">
+    @for (item of accordionItems; track $index) {
+    <app-accordion-collapse-item [item]="item" [id]="$index" (toggleAccordionItem)="toggleAccordion($index)" />
+    }
+</div>

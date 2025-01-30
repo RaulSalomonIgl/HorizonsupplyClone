@@ -43,17 +43,79 @@ export class IconService {
       )
     );
     this.iconRegistry.addSvgIcon(
+      'left',
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        'assets/icons/chevron-left.svg'
+      )
+    );
+    this.iconRegistry.addSvgIcon(
+      'right',
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        'assets/icons/chevron-right.svg'
+      )
+    );
+    this.iconRegistry.addSvgIcon(
+      'decrement',
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        'assets/icons/decrement.svg'
+      )
+    );
+    this.iconRegistry.addSvgIcon(
       'disc',
       this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/disc.svg')
+    );
+    this.iconRegistry.addSvgIcon(
+      'favorite-filled',
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        'assets/icons/heart-filled.svg'
+      )
+    );
+    this.iconRegistry.addSvgIcon(
+      'favorite',
+      this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/heart.svg')
+    );
+    this.iconRegistry.addSvgIcon(
+      'increment',
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        'assets/icons/increment.svg'
+      )
     );
     this.iconRegistry.addSvgIcon(
       'logo',
       this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/logo.svg')
     );
     this.iconRegistry.addSvgIcon(
+      'moon',
+      this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/moon.svg')
+    );
+    this.iconRegistry.addSvgIcon(
+      'more',
+      this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/plus.svg')
+    );
+    this.iconRegistry.addSvgIcon(
+      'add-cart',
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        'assets/icons/shopping-cart-plus.svg'
+      )
+    );
+    this.iconRegistry.addSvgIcon(
       'cart',
       this.sanitizer.bypassSecurityTrustResourceUrl(
         'assets/icons/shopping-cart.svg'
+      )
+    );
+    this.iconRegistry.addSvgIcon(
+      'star',
+      this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/star.svg')
+    );
+    this.iconRegistry.addSvgIcon(
+      'sun',
+      this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/sun.svg')
+    );
+    this.iconRegistry.addSvgIcon(
+      'view',
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        'assets/icons/visibility.svg'
       )
     );
   }

@@ -1,0 +1,8 @@
+<button id="theme-toggle" type="button" (click)="toggleTheme()" class="inline-flex items-center cursor-pointer">
+    @if (isDarkMode) {
+    <mat-icon svgIcon="sun" class="h-8 w-auto text-light-contrast"></mat-icon>
+    }
+    @else {
+    <mat-icon svgIcon="moon" class="h-8 w-auto text-dark-contrast"></mat-icon>
+    }
+</button>

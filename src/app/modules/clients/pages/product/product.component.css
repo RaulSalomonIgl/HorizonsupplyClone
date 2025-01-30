@@ -1,0 +1,5 @@
+mat-icon[svgIcon="decrement"],
+mat-icon[svgIcon="increment"] {
+  height: 0.75rem;
+  width: 0.75rem;
+}

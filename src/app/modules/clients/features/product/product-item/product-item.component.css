@@ -1,0 +1,13 @@
+mat-icon[svgIcon="view"] {
+  height: 3.2rem;
+  width: 3.2rem;
+  color: #fafafa;
+  background-color: #0a0a0a;
+  border-radius: 100%;
+  padding: 12px;
+}
+
+mat-icon[svgIcon="view"]:hover {
+  color: #ffffff;
+  background-color: #1f1f1f;
+}

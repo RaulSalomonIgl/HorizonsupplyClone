@@ -6,16 +6,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        "light": "#FFFFFF",
+        "light-contrast": "#FAFAFA",
+
         "title": "#EDEDED",
         "paragraph": "#A1A1A1",
-        "dark": "#0A0A0A",
-        "dark-contrast": "#1A1A1A",
+        "dark": "#000000",
+        "dark-contrast": "#0A0A0A",
         hover: "#1F1F1F",
+        disabled: "#5B5B5B",
         "active": "#292929",
       },
     },
-    darkMode: 'class',
   },
+  darkMode: 'selector',
   plugins: [],
 }
 

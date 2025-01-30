@@ -1,0 +1,5 @@
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+    @for (item of data; track $index) {
+    <app-product-item [product]="item" />
+    }
+</div>

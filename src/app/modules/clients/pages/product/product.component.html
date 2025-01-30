@@ -1,0 +1,157 @@
+<div class="container mx-auto px-4 py-8">
+    <div class="grid gap-8 lg:grid-cols-2">
+        <!-- Product Images -->
+        <div class="space-y-4">
+            <div class="aspect-square relative overflow-hidden rounded-lg bg-gray-100">
+                <img [src]="productCover?.src" [alt]="productCover?.alt" class="object-cover" fill priority />
+            </div>
+            <!-- Thumbnail Slider -->
+            <div class="relative">
+                <div class="grid grid-cols-4 gap-4">
+                    @for(media of product?.media?.slice(currentIndex, currentIndex + 4); track $index){
+                    <button key=$index class="aspect-square relative overflow-hidden rounded-lg border bg-gray-100"
+                        (click)="setCover(media)">
+                        <img [src]="media.src" [alt]="media.alt" class="object-cover" fill />
+                    </button>
+                    }
+                </div>
+
+                <!-- Navigation Buttons -->
+                @if (currentIndex > 0) {
+                <button type="button" (click)="showPrevious()"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 text-white bg-indigo-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-dark-contrast dark:hover:bg-hover dark:focus:ring-blue-800">
+                    <mat-icon svgIcon="left"></mat-icon>
+                    <span class="sr-only">Icon description</span>
+                </button>
+                }
+
+                @if (currentIndex < (this.product?.media?.length ?? 0) - 4) { <button type="button" (click)="showNext()"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 text-white bg-indigo-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-dark-contrast dark:hover:bg-hover dark:focus:ring-blue-800">
+                    <mat-icon svgIcon="right"></mat-icon>
+
+                    <span class="sr-only">Icon description</span>
+                    </button>
+                    }
+
+            </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="space-y-6">
+            <div>
+                <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:pr-12 dark:text-title">{{product?.title}}
+                </h1>
+                <p class="mt-4 text-3xl text-gray-900 dark:text-paragraph">{{product?.price | currency:'$'}}</p>
+            </div>
+
+            <!-- Rating -->
+            <div class="flex text-indigo-500">
+                <mat-icon svgIcon="star" class="dark:text-light-contrast"></mat-icon>
+                <mat-icon svgIcon="star" class="dark:text-light-contrast"></mat-icon>
+                <mat-icon svgIcon="star" class="dark:text-light-contrast"></mat-icon>
+                <mat-icon svgIcon="star" class="dark:text-light-contrast"></mat-icon>
+                <mat-icon svgIcon="star" class="text-light-contrast dark:text-hover"></mat-icon>
+                <p class="ms-1 text-sm font-medium text-gray-500 dark:text-paragraph/75">4.95</p>
+                <p class="ms-1 text-sm font-medium text-gray-500 dark:text-paragraph/75">out of</p>
+                <p class="ms-1 text-sm font-medium text-gray-500 dark:text-paragraph/75">5</p>
+            </div>
+
+            <p class="text-sm font-medium text-gray-500 dark:text-paragraph/75">1,745 global ratings</p>
+
+            <p class="text-gray-900 dark:text-paragraph p-2.5" [innerHTML]="product?.description">
+            </p>
+
+            <!-- Size -->
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <h3 class="font-medium text-gray-900 dark:text-title">Size</h3>
+                    <a href="#" class="text-sm text-indigo-500 hover:text-indigo-400">Size guide</a>
+                </div>
+                <div class="grid grid-cols-4 gap-2">
+                    @for (size of product?.variants; track $index) {
+                    @if(size.available){
+                    <label
+                        class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-4 py-3 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 dark:bg-dark-contrast dark:text-title dark:hover:bg-hover">
+                        <input type="radio" name="size-choice" value="{{size.sku}}" class="sr-only">
+                        <span>{{size.sku | productSize}}</span>
+                        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
+                    </label>
+                    }
+                    @else {
+                    <label
+                        class="group relative flex cursor-not-allowed items-center justify-center rounded-md border bg-gray-50 px-4 py-3 text-sm font-medium uppercase text-gray-200 focus:outline-none sm:flex-1 dark:bg-disabled dark:text-title">
+                        <input type="radio" name="size-choice" value="{{size.sku}}" disabled class="sr-only">
+                        <span>{{size.sku | productSize}}</span>
+                        <span aria-hidden="true"
+                            class="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200">
+                            <svg class="absolute inset-0 size-full stroke-2 text-gray-200" viewBox="0 0 100 100"
+                                preserveAspectRatio="none" stroke="currentColor">
+                                <line x1="0" y1="100" x2="100" y2="0" vector-effect="non-scaling-stroke" />
+                            </svg>
+                        </span>
+                    </label>
+                    }
+                    }
+                </div>
+            </div>
+
+            <!-- Quantity -->
+            <div>
+                <label for="quantity-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose
+                    quantity:</label>
+                <div class="relative flex items-center max-w-[8rem]">
+                    <button type="button" id="decrement-button" data-input-counter-decrement="quantity-input"
+                        (click)="decrement()"
+                        class="bg-gray-100 dark:bg-dark-contrast dark:hover:bg-hover dark:border-light-contrast hover:bg-gray-200 border border-dark-contrast rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                        <mat-icon svgIcon="decrement" class="w-3 h-3 text-gray-900 dark:text-white"></mat-icon>
+                    </button>
+
+                    <input type="text" id="quantity-input" data-input-counter aria-describedby="helper-text-explanation"
+                        class="bg-gray-50 border border-x-0 border-dark-contrast h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-dark-contrast dark:border-light-contrast dark:placeholder-paragraph dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        [value]="quantity" disabled required />
+
+                    <button type="button" id="increment-button" data-input-counter-increment="quantity-input"
+                        (click)="increment()"
+                        class="bg-gray-100 dark:bg-dark-contrast dark:hover:bg-hover dark:border-light-contrast hover:bg-gray-200 border border-dark-contrast rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                        <mat-icon svgIcon="increment" class="w-3 h-3 text-gray-900 dark:text-white"></mat-icon>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex gap-4 lg:w-2/3">
+                <Button
+                    class="mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 flex-1">Add
+                    to bag</Button>
+                <Button variant="outline" size="icon"
+                    class="mt-6 items-center justify-center rounded-md border border-transparent px-8 py-2 text-base font-medium dark:text-white focus:outline-none"
+                    (mouseover)="isHovered = true" (mouseleave)="isHovered = false">
+                    <mat-icon *ngIf="!isHovered" svgIcon="favorite"
+                        class="transition-all duration-300 ease-in-out"></mat-icon>
+                    <mat-icon *ngIf="isHovered" svgIcon="favorite-filled"
+                        class="text-indigo-600 transition-all duration-300 ease-in-out"></mat-icon>
+                </Button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-2">
+        <div class="lg:order-1 order-last space-y-4">
+            <!-- Reviews -->
+            <app-rating />
+
+            <app-review />
+        </div>
+
+        <div class="lg:order-2 order-first space-y-4">
+            <!-- Reviews -->
+            <div class="mt-8">
+                <app-accordion-collapse />
+            </div>
+        </div>
+    </div>
+
+
+</div>

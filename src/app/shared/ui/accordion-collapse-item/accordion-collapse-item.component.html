@@ -1,0 +1,16 @@
+<h2 [id]="'accordion-collapse-heading-'+id">
+    <button type="button"
+        class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border-b-2 border-gray-200 focus:ring-0 dark:border-dark-contrast dark:text-title hover:bg-gray-100 dark:hover:bg-hover gap-3"
+        (click)="toggleAccordion(id)" [attr.aria-expanded]="item.isOpen.toString()"
+        [attr.aria-controls]="'accordion-collapse-body-' + id">
+        <span>{{ item.title }}</span>
+        <mat-icon svgIcon="more"></mat-icon>
+    </button>
+</h2>
+<div [id]="'accordion-collapse-body-'+id" [ngClass]="{'hidden': !item.isOpen}"
+    [attr.aria-labelledby]="'accordion-collapse-heading-' + id">
+    <div
+        class="p-5 border border-b-0 bg-light-contrast border-light-contrast dark:border-dark-contrast dark:bg-dark-contrast">
+        <p class="mb-2 text-gray-500 dark:text-paragraph">{{item.content}}</p>
+    </div>
+</div>
