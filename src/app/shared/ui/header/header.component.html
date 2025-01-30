@@ -1,8 +1,8 @@
-<nav class="border-gray-200 bg-gray-50 dark:bg-dark dark:border-dark-contrast">
+<nav class="bg-light border-light-contrast dark:bg-dark dark:border-dark-contrast">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 
         <button type="button" (click)="toggleSidebar()"
-            class="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-hover dark:focus:ring-gray-600">
+            class="inline-flex items-center justify-center p-2 size-10 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-hover dark:focus:ring-gray-600">
             <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M1 1h15M1 7h15M1 13h15" />
@@ -10,7 +10,7 @@
         </button>
 
         <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <mat-icon svgIcon="logo" class="h-8 w-auto dark:text-slate-50"></mat-icon>
+            <mat-icon svgIcon="logo" class="size-48 w-auto text-dark-contrast dark:text-light-contrast"></mat-icon>
         </a>
 
         <div class="relative inline-block text-left">
@@ -18,7 +18,7 @@
                 <button type="button" (click)="toggleUserMenu()" aria-expanded="true" aria-haspopup="true"
                     class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">
                     <span class="sr-only">Open user menu</span>
-                    <img class="w-8 h-8 rounded-full"
+                    <img class="size-8 rounded-full"
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/2014-06-05_Vainsteam_Bring_me_the_Horizon_Oli_Sykes_11.jpg/1200px-2014-06-05_Vainsteam_Bring_me_the_Horizon_Oli_Sykes_11.jpg"
                         alt="user photo">
                 </button>
@@ -56,6 +56,9 @@
                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-paragraph dark:hover:bg-hover dark:hover:text-title"
                             role="menuitem" />
                     </li>
+                    <li>
+                        <app-dark-mode-switcher class="block px-4 py-2 text-sm opacity-55" role="menuitem" />
+                    </li>
                 </ul>
             </div>
         </div>
@@ -88,28 +91,18 @@
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Collections</span>
                     </span>
                     <ul class="p-4 space-y-2">
+                        @for (item of data; track $index) {
                         <li>
                             <a href="#"
                                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-paragraph hover:bg-gray-100 dark:hover:bg-hover group">
-                                <span class="ms-3">POST HUMAN: NeX GEn</span>
+                                <span class="ms-3 uppercase">{{item.loc._text | collectionsName}}</span>
                             </a>
                         </li>
+                        }
                         <li>
                             <a href="#"
                                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-paragraph hover:bg-gray-100 dark:hover:bg-hover group">
                                 <span class="flex-1 ms-3 whitespace-nowrap">SEMPITERNAL 10TH ANNIVERSARY</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-paragraph hover:bg-gray-100 dark:hover:bg-hover group">
-                                <span class="flex-1 ms-3 whitespace-nowrap">ERAS</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-paragraph hover:bg-gray-100 dark:hover:bg-hover group">
-                                <span class="flex-1 ms-3 whitespace-nowrap">TOUR</span>
                             </a>
                         </li>
                     </ul>
@@ -140,8 +133,6 @@
                     </a>
                 </li>
             </ul>
-
-
 
         </div>
     </div>
