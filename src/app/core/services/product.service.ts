@@ -11,15 +11,26 @@ export class ProductService {
 
   constructor(private _http: HttpClient) {}
 
+  private getProducts(): Observable<any[]> {
+    return this._http.get<any[]>(this.apiUrl).pipe(
+      map((products) =>
+        products.map((product) => ({
+          ...product,
+          price: product.price / 100,
+        }))
+      )
+    );
+  }
+
   // Método para obtener los datos del archivo JSON
-  getData(): Observable<any> {
-    return this._http.get<any>(this.apiUrl);
+  getData(): Observable<any[]> {
+    return this.getProducts();
   }
 
   // Método para obtener los datos de un producto
   getProduct(p_id: number): Observable<Product> {
-    return this._http
-      .get<Product>(this.apiUrl)
-      .pipe(map((data: any) => data.find((item: Product) => item.id === p_id)));
+    return this.getProducts().pipe(
+      map((data: any) => data.find((item: Product) => item.id === p_id))
+    );
   }
 }

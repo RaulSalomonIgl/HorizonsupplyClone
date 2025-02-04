@@ -12,11 +12,7 @@ export class CurrencyPipe implements PipeTransform {
   ): string {
     if (value == null) return '';
 
-    // Dividir el valor entre 100 para obtener el valor en la unidad deseada
-    let formattedValue = (value / 100).toFixed(decimalPlaces);
-
-    // Usar Intl.NumberFormat para separar miles (si es necesario)
-    // formattedValue = new Intl.NumberFormat().format(parseFloat(formattedValue));
+    let formattedValue = value.toFixed(decimalPlaces);
 
     // Devolver el valor con el símbolo de la moneda
     return `${currencySymbol}${formattedValue}`;
