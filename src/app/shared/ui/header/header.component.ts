@@ -6,6 +6,7 @@ import { CurrencySelectorComponent } from '../../../modules/clients/features/cur
 import { DarkModeSwitcherComponent } from '../dark-mode-switcher/dark-mode-switcher.component';
 import { CollectionService } from '@/app/core/services/collection.service';
 import { CollectionsNamePipe } from '@/app/core/pipes/collections-name.pipe';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,7 @@ import { CollectionsNamePipe } from '@/app/core/pipes/collections-name.pipe';
   imports: [
     MatIcon,
     CommonModule,
+    RouterModule,
     CurrencySelectorComponent,
     DarkModeSwitcherComponent,
     CollectionsNamePipe,

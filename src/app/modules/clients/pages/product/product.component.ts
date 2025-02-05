@@ -10,6 +10,7 @@ import { AccordionCollapseComponent } from '../../../../shared/ui/accordion-coll
 import { ReviewComponent } from '../../../../shared/ui/review/review.component';
 import { RatingComponent } from '../../../../shared/ui/rating/rating.component';
 import { CommonModule } from '@angular/common';
+import { ShoppingCartService } from '@/app/core/services/shopping-cart.service';
 
 @Component({
   selector: 'app-product',
@@ -28,6 +29,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductComponent implements OnInit {
   product?: Product;
+  userId = 'currentUserId'; // Esto debería ser dinámico según el usuario logueado
   productCover?: Medum;
   currentIndex: number = 0;
   isHovered: boolean = false;
@@ -35,7 +37,8 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private _route: ActivatedRoute,
-    private _productService: ProductService
+    private _productService: ProductService,
+    private _shoppingCartService: ShoppingCartService
   ) {}
 
   ngOnInit(): void {
@@ -70,5 +73,9 @@ export class ProductComponent implements OnInit {
 
   increment() {
     this.quantity += 1;
+  }
+
+  addToCart(p_product: Product): void {
+    this._shoppingCartService.addProduct(this.userId, p_product, this.quantity);
   }
 }
