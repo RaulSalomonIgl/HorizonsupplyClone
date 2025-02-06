@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { ShoppingCartService } from '@/app/core/services/shopping-cart.service';
+import { NotificationService } from '@/app/core/services/notification.service';
 
 @Component({
   selector: 'app-product-quickview',
@@ -26,7 +27,10 @@ export class ProductQuickviewComponent implements OnChanges {
   userId = 'currentUserId'; // Esto debería ser dinámico según el usuario logueado
   productCover!: string;
 
-  constructor(private _shoppingCartService: ShoppingCartService) {}
+  constructor(
+    private _shoppingCartService: ShoppingCartService,
+    private _notificationService: NotificationService
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.productCover = this.product.images[0];
@@ -42,5 +46,9 @@ export class ProductQuickviewComponent implements OnChanges {
 
   addToCart(p_product: Product): void {
     this._shoppingCartService.addProduct(this.userId, p_product);
+    this._notificationService.showNotification(
+      'Successfully saved!',
+      `${p_product.title} añadido al carrito`
+    );
   }
 }

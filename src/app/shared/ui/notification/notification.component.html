@@ -1,0 +1,8 @@
+<div *ngIf="title"
+    class="notification bg-light-contrast dark:bg-dark-contrast fixed bottom-5 right-5 p-4 rounded-md z-50">
+    <h1 class="flex font-medium gap-2 text-title">
+        <mat-icon svgIcon="circle-check" class="text-success"></mat-icon>
+        {{title}}
+    </h1>
+    <p class="text-sm text-paragraph">{{ message }}</p>
+</div>

@@ -55,6 +55,12 @@ export class IconService {
       )
     );
     this.iconRegistry.addSvgIcon(
+      'circle-check',
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        'assets/icons/circle-check.svg'
+      )
+    );
+    this.iconRegistry.addSvgIcon(
       'decrement',
       this.sanitizer.bypassSecurityTrustResourceUrl(
         'assets/icons/decrement.svg'

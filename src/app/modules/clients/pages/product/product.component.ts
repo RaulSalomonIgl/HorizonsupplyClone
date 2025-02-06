@@ -11,6 +11,7 @@ import { ReviewComponent } from '../../../../shared/ui/review/review.component';
 import { RatingComponent } from '../../../../shared/ui/rating/rating.component';
 import { CommonModule } from '@angular/common';
 import { ShoppingCartService } from '@/app/core/services/shopping-cart.service';
+import { NotificationService } from '@/app/core/services/notification.service';
 
 @Component({
   selector: 'app-product',
@@ -38,6 +39,7 @@ export class ProductComponent implements OnInit {
   constructor(
     private _route: ActivatedRoute,
     private _productService: ProductService,
+    private _notificationService: NotificationService,
     private _shoppingCartService: ShoppingCartService
   ) {}
 
@@ -77,5 +79,9 @@ export class ProductComponent implements OnInit {
 
   addToCart(p_product: Product): void {
     this._shoppingCartService.addProduct(this.userId, p_product, this.quantity);
+    this._notificationService.showNotification(
+      'Successfully saved!',
+      `${p_product.title} añadido al carrito`
+    );
   }
 }

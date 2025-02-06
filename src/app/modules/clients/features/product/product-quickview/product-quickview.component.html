@@ -86,52 +86,49 @@
                             <section aria-labelledby="options-heading" class="mt-10">
                                 <h3 id="options-heading" class="sr-only">Product options</h3>
 
-                                <form>
-                                    <!-- Sizes -->
-                                    <fieldset class="mt-10" aria-label="Choose a size">
-                                        <div class="flex items-center justify-between">
-                                            <div class="text-sm font-medium text-gray-900 dark:text-paragraph">Size
-                                            </div>
+                                <!-- Sizes -->
+                                <fieldset class="mt-10" aria-label="Choose a size">
+                                    <div class="flex items-center justify-between">
+                                        <div class="text-sm font-medium text-gray-900 dark:text-paragraph">Size
                                         </div>
+                                    </div>
 
-                                        <div class="mt-4 grid grid-cols-4 gap-4">
-                                            @for (size of product.variants; track $index) {
-                                            @if(size.available){
-                                            <label
-                                                class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-4 py-3 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 dark:bg-dark-contrast dark:text-title dark:hover:bg-hover">
-                                                <input type="radio" name="size-choice" value="{{size.sku}}"
-                                                    class="sr-only">
-                                                <span>{{size.sku | productSize}}</span>
-                                                <span class="pointer-events-none absolute -inset-px rounded-md"
-                                                    aria-hidden="true"></span>
-                                            </label>
-                                            }
-                                            @else {
-                                            <label
-                                                class="group relative flex cursor-not-allowed items-center justify-center rounded-md border bg-gray-50 px-4 py-3 text-sm font-medium uppercase text-gray-200 focus:outline-none sm:flex-1 dark:bg-disabled dark:text-title">
-                                                <input type="radio" name="size-choice" value="{{size.sku}}" disabled
-                                                    class="sr-only">
-                                                <span>{{size.sku | productSize}}</span>
-                                                <span aria-hidden="true"
-                                                    class="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200">
-                                                    <svg class="absolute inset-0 size-full stroke-2 text-gray-200"
-                                                        viewBox="0 0 100 100" preserveAspectRatio="none"
-                                                        stroke="currentColor">
-                                                        <line x1="0" y1="100" x2="100" y2="0"
-                                                            vector-effect="non-scaling-stroke" />
-                                                    </svg>
-                                                </span>
-                                            </label>
-                                            }
-                                            }
+                                    <div class="mt-4 grid grid-cols-4 gap-4">
+                                        @for (size of product.variants; track $index) {
+                                        @if(size.available){
+                                        <label
+                                            class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-4 py-3 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 dark:bg-dark-contrast dark:text-title dark:hover:bg-hover">
+                                            <input type="radio" name="size-choice" value="{{size.sku}}" class="sr-only">
+                                            <span>{{size.sku | productSize}}</span>
+                                            <span class="pointer-events-none absolute -inset-px rounded-md"
+                                                aria-hidden="true"></span>
+                                        </label>
+                                        }
+                                        @else {
+                                        <label
+                                            class="group relative flex cursor-not-allowed items-center justify-center rounded-md border bg-gray-50 px-4 py-3 text-sm font-medium uppercase text-gray-200 focus:outline-none sm:flex-1 dark:bg-disabled dark:text-title">
+                                            <input type="radio" name="size-choice" value="{{size.sku}}" disabled
+                                                class="sr-only">
+                                            <span>{{size.sku | productSize}}</span>
+                                            <span aria-hidden="true"
+                                                class="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200">
+                                                <svg class="absolute inset-0 size-full stroke-2 text-gray-200"
+                                                    viewBox="0 0 100 100" preserveAspectRatio="none"
+                                                    stroke="currentColor">
+                                                    <line x1="0" y1="100" x2="100" y2="0"
+                                                        vector-effect="non-scaling-stroke" />
+                                                </svg>
+                                            </span>
+                                        </label>
+                                        }
+                                        }
 
-                                        </div>
-                                    </fieldset>
+                                    </div>
+                                </fieldset>
 
-                                    <button (click)="addToCart(product)"
-                                        class="mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-dark-contrast">Add
-                                        to bag</button>
-                                </form>
+                                <button (click)="addToCart(product)"
+                                    class="mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-dark-contrast">Add
+                                    to bag</button>
                             </section>
                         </div>
                     </div>

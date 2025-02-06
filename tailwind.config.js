@@ -16,6 +16,7 @@ module.exports = {
         hover: "#1F1F1F",
         disabled: "#5B5B5B",
         "active": "#292929",
+        success: "#4caf50",
       },
     },
   },
